@@ -5,6 +5,7 @@ const directus = createDirectus(
 ).with(
   rest({
     onRequest: (options) => ({ ...options, cache: "no-store" }),
+    credentials: "include",
   }),
 );
 
