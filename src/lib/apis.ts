@@ -16,13 +16,21 @@ export const fetchNavbarItems = async (
   return result as NavbarItem;
 };
 
-export const fetchFooterData = async (modelName: string) => {
+export const fetchFooterData = async (
+  modelName: string,
+): Promise<FooterItems> => {
   try {
-    const response = await fetch(
-      `${BASE_URL}${modelName}?fields=*,payment_icon.*`,
+    const result = await directus.request(
+      readSingleton(modelName, {
+        fields: ["*", "payment_icon.*"],
+      }),
     );
-    const data = await response.json();
-    return data as FooterItems;
+
+    // const response = await fetch(
+    //   `${BASE_URL}${modelName}?fields=*,payment_icon.*`,
+    // );
+
+    return result as FooterItems;
   } catch (error) {
     console.error("Error fetching fetchFooterPaymentOptionsItems data:", error);
     throw error;

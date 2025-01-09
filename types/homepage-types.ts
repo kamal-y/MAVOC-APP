@@ -17,4 +17,11 @@ export interface FooterItems {
     icon: string;
     target: string;
   }>;
+  footer_items: Array<{
+    heading: string;
+    subCategories: Array<{
+      title: string;
+      target: string;
+    }>;
+  }>;
 }
