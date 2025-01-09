@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import { fetchNavbarItems, fetchFooterPaymentOptionsItems } from "./apis";
+import { fetchNavbarItems, fetchFooterData, fetchAboutUsData } from "./apis";
 
 export const useNavbarItems = (modelName: string) => {
   return useQuery({
@@ -8,9 +8,16 @@ export const useNavbarItems = (modelName: string) => {
   });
 };
 
-export const useFooterPaymentOptionsItems = (modelName: string) => {
+export const useFooterData = (modelName: string) => {
   return useQuery({
     queryKey: [modelName],
-    queryFn: () => fetchFooterPaymentOptionsItems(modelName),
+    queryFn: () => fetchFooterData(modelName),
+  });
+};
+
+export const useAboutUsData = (modelName: string) => {
+  return useQuery({
+    queryKey: [modelName],
+    queryFn: () => fetchAboutUsData(modelName),
   });
 };

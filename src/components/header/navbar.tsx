@@ -10,7 +10,7 @@ import MAVOC from "@/../public/Group.svg";
 import Link from "next/link";
 
 const Navbar = () => {
-  const { data } = useNavbarItems("navbar");
+  const { data, isSuccess } = useNavbarItems("navbar");
 
   const nav_items = data?.nav_items;
 
@@ -21,13 +21,14 @@ const Navbar = () => {
           <Image src={MAVOC} alt="logo-image" width={"100"} height={"45"} />
 
           <ul className="hidden items-center justify-center gap-8 md:flex">
-            {nav_items?.map((data, id) => {
-              return (
-                <Link href={`/${data.target}`} key={id}>
-                  <li>{data.item}</li>
-                </Link>
-              );
-            })}
+            {isSuccess &&
+              nav_items?.map((data, id) => {
+                return (
+                  <Link href={`/${data.target}`} key={id}>
+                    <li>{data.item}</li>
+                  </Link>
+                );
+              })}
           </ul>
         </div>
 
@@ -35,7 +36,7 @@ const Navbar = () => {
           <IoSearch className="h-6 w-6" aria-label="Search" />
           <TbUserCircle className="h-6 w-6" aria-label="user profile" />
           <BsCart className="h-6 w-6 font-bold" aria-label="Cart" />
-          <MobileNavbar />
+          {isSuccess && <MobileNavbar nav_items={nav_items || []} />}
         </div>
       </div>
     </nav>

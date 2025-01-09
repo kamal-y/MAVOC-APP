@@ -1,19 +1,8 @@
-import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Navbar from "../components/header/navbar";
 import Footer from "@/components/footer/footer";
 import { Metadata } from "next";
-import QueryClientProviderWrapper from "./QueryClientProvider"; // Move QueryClient logic here
-
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
+import QueryClientProviderWrapper from "./QueryClientProvider";
 
 export const metadata: Metadata = {
   title: "MAVOK",
@@ -27,9 +16,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
+      <body className={`antialiased`}>
         <QueryClientProviderWrapper>
           <Navbar />
           {children}

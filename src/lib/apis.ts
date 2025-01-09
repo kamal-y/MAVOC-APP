@@ -1,6 +1,8 @@
 import directus from "./directus";
-import { readItems, readSingleton } from "@directus/sdk";
-import { NavbarItem } from "../../types/homepage-types";
+import { readSingleton } from "@directus/sdk";
+import { NavbarItem, FooterItems } from "../../types/homepage-types";
+
+const BASE_URL = "http://localhost:8055/items/";
 
 export const fetchNavbarItems = async (
   modelName: string,
@@ -14,16 +16,26 @@ export const fetchNavbarItems = async (
   return result as NavbarItem;
 };
 
-export const fetchFooterPaymentOptionsItems = async (modelName: string) => {
+export const fetchFooterData = async (modelName: string) => {
   try {
-    const results = await directus.request(
-      readItems(modelName, {
-        fields: ["img"],
-      }),
+    const response = await fetch(
+      `${BASE_URL}${modelName}?fields=*,payment_icon.*`,
     );
-    return results;
+    const data = await response.json();
+    return data as FooterItems;
   } catch (error) {
     console.error("Error fetching fetchFooterPaymentOptionsItems data:", error);
+    throw error;
+  }
+};
+
+export const fetchAboutUsData = async (modelName: string) => {
+  try {
+    const result = await directus.request(readSingleton(modelName));
+
+    return result;
+  } catch (error) {
+    console.error("Error fetching fetchAboutUsData data:", error);
     throw error;
   }
 };

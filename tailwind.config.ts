@@ -10,8 +10,9 @@ export default {
   theme: {
     fontSize: {
       mainHeading: "2.4rem",
-      mobileMainHeading: "1.8rem",
+      mobileMainHeading: "1.6rem",
       subHeading: "1.6rem",
+      sectionMainHeading:"1.8rem",
       main: "1.3rem",
       mainSmall: "0.9rem",
     },

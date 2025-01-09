@@ -8,20 +8,23 @@ import {
 } from "@/components/ui/sheet";
 import Link from "next/link";
 
-const Items = ["220 MP", "ACCESSORIES", "CONSUMABLES", "COMPANY"];
+type navItemsProps = {
+  target: string;
+  item: string;
+}[];
 
-const MobileNavbar = () => {
+const MobileNavbar = ({ nav_items }: { nav_items: navItemsProps }) => {
   return (
     <div className="flex md:hidden">
       <Sheet>
         <SheetTrigger asChild>
-          <RxHamburgerMenu className="items-center justify-center text-2xl" />
+          <RxHamburgerMenu className="text-2xl items-center justify-center" />
         </SheetTrigger>
         <SheetContent className="flex flex-col gap-4 pt-8">
-          {Items.map((data, id) => {
+          {nav_items.map((data, id) => {
             return (
               <SheetTitle asChild key={id}>
-                <Link href={""}>{data}</Link>
+                <Link href={`${data.target}`}>{data.item}</Link>
               </SheetTitle>
             );
           })}
