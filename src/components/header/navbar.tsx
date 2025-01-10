@@ -1,18 +1,15 @@
-"use client";
 import Image from "next/image";
 import React from "react";
 import { IoSearch } from "react-icons/io5";
 import { TbUserCircle } from "react-icons/tb";
 import { BsCart } from "react-icons/bs";
 import MobileNavbar from "./mobile-navbar-items";
-import { useNavbarItems } from "@/lib/QueryHooks";
 import MAVOC from "@/../public/Group.svg";
 import Link from "next/link";
+import { fetchNavbarItems } from "@/lib/apis/homepage-api";
 
-const Navbar = () => {
-  const { data, isSuccess } = useNavbarItems("navbar");
-
-  const nav_items = data?.nav_items;
+const Navbar = async () => {
+  const navbarData = await fetchNavbarItems();
 
   return (
     <nav className="relative w-full bg-black bg-transparent p-4 py-6">
@@ -21,14 +18,13 @@ const Navbar = () => {
           <Image src={MAVOC} alt="logo-image" width={"100"} height={"45"} />
 
           <ul className="hidden items-center justify-center gap-8 md:flex">
-            {isSuccess &&
-              nav_items?.map((data, id) => {
-                return (
-                  <Link href={`/${data.target}`} key={id}>
-                    <li>{data.item}</li>
-                  </Link>
-                );
-              })}
+            {navbarData?.nav_items?.map((data, id) => {
+              return (
+                <Link href={`/${data.target}`} key={id}>
+                  <li>{data.item}</li>
+                </Link>
+              );
+            })}
           </ul>
         </div>
 
@@ -36,7 +32,7 @@ const Navbar = () => {
           <IoSearch className="h-6 w-6" aria-label="Search" />
           <TbUserCircle className="h-6 w-6" aria-label="user profile" />
           <BsCart className="h-6 w-6 font-bold" aria-label="Cart" />
-          {isSuccess && <MobileNavbar nav_items={nav_items || []} />}
+          <MobileNavbar nav_items={navbarData.nav_items || []} />
         </div>
       </div>
     </nav>

@@ -1,14 +1,15 @@
-"use client";
 import React from "react";
 import Image from "next/image";
-import { useFooterData } from "@/lib/QueryHooks";
 import Link from "next/link";
 import Newsletter from "./newsletter";
+import { fetchFooterData } from "@/lib/apis/homepage-api";
 
 const DIRECTUS_URL = process.env.NEXT_PUBLIC_DIRECTUS_FILE_API;
 
-const Footer = () => {
-  const { data: footerData } = useFooterData("footer");
+const Footer = async () => {
+  const footerData = await fetchFooterData();
+
+  console.log(footerData);
 
   return (
     <div className="w-full bg-white text-textGray">
@@ -47,7 +48,6 @@ const Footer = () => {
               {footerData?.payment_icon?.length ? (
                 footerData.payment_icon.map((data, index) => {
                   const iconURL = `${DIRECTUS_URL}${data?.directus_files_id}`;
-                  console.log("Icon URL:", iconURL); // Debug the generated URL
                   return (
                     <Image
                       key={index}

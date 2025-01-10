@@ -1,20 +1,19 @@
-"use client";
 import Image from "next/image";
 import React from "react";
-import { useAboutUsData } from "@/lib/QueryHooks";
+import { fetchAboutUsData } from "@/lib/apis/homepage-api";
 
 const DIRECTUS_FILE_API = "http://localhost:8055/assets/";
 
-const AboutSection = () => {
-  const { data: aboutUsData, isSuccess } = useAboutUsData("about_us");
+const AboutSection = async () => {
+  const aboutUsData = await fetchAboutUsData();
 
-  if (!isSuccess)
+  if (!aboutUsData)
     return <div className="mx-auto p-4 text-mainSmall">Loading...</div>;
 
   return (
     <div className="w-full bg-black text-textGray">
       <div className="mx-auto flex max-w-screen-xl flex-col items-start justify-between gap-8 p-4 py-8 md:p-6 md:py-16">
-        <div className="text-sectionMainHeading mx-auto w-fit text-center font-bold uppercase">
+        <div className="mx-auto w-fit text-center text-sectionMainHeading font-bold uppercase">
           {aboutUsData.title}
         </div>
 

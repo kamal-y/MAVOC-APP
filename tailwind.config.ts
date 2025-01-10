@@ -8,43 +8,39 @@ export default {
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
+    fontFamily: {
+      "chrakraPatch": "Chakra Petch",
+      "sans": "sans-serif",
+    },
     fontSize: {
       mainHeading: "2.4rem",
       mobileMainHeading: "1.6rem",
       subHeading: "1.6rem",
-      sectionMainHeading:"1.8rem",
+      sectionMainHeading: "1.8rem",
       main: "1.3rem",
       mainSmall: "0.9rem",
     },
-
     screens: {
       "mdCustom": "1080px",
-      
-      'sm': '640px',
-      'md': '800px',
-      'lg': '1024px',
-      'xl': '1280px',
-      '2xl': '1536px',
-      '3xl': '1600px',
+      "sm": "640px",
+      "md": "800px",
+      "lg": "1024px",
+      "xl": "1280px",
+      "2xl": "1536px",
+      "3xl": "1600px",
     },
-
     extend: {
       colors: {
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
         mainGreen: "var(--main-green)",
-        textGray : "#737373",
-
-
+        textGray: "#737373",
+        bgLightGray: "#FAFAFA",
+        bgDarkGray: "#F5F5F5",
         card: {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
-
-        backgroundImage: {
-          "hero-section": "url('./public/main.svg')",
-        },
-
         popover: {
           DEFAULT: "hsl(var(--popover))",
           foreground: "hsl(var(--popover-foreground))",
@@ -79,6 +75,9 @@ export default {
           "4": "hsl(var(--chart-4))",
           "5": "hsl(var(--chart-5))",
         },
+      },
+      backgroundImage: {
+        "hero-section": "url('./public/main.svg')",
       },
       borderRadius: {
         lg: "var(--radius)",

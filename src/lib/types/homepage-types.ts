@@ -25,3 +25,9 @@ export interface FooterItems {
     }>;
   }>;
 }
+
+export interface aboutUsType {
+  title: string;
+  description: string;
+  file: string;
+}
