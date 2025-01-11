@@ -16,13 +16,15 @@ const ArticleLeftSection = ({
 
   return (
     <div className="flex w-full flex-col gap-3 sm:w-1/2">
-      <Image
-        src={`${BASE_URL}${currentImage?.directus_files_id}`}
-        alt=""
-        width={800}
-        height={400}
-        className="bg-bgDarkGray"
-      />
+      <div className="h-45 w-full">
+        <Image
+          src={`${BASE_URL}${currentImage?.directus_files_id}`}
+          alt=""
+          width={800}
+          height={400}
+          className="bg-bgDarkGray"
+        />
+      </div>
       <div className="flex gap-2">
         {productImageList.map((image) => (
           <Image

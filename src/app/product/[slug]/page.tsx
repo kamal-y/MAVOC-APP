@@ -2,10 +2,14 @@ import React from "react";
 import { MdNavigateNext } from "react-icons/md";
 import ArticleLeftSection from "@/components/article/article-left-section";
 import ArticleRightSection from "@/components/article/article-right-section";
-import { fetchAllProductsData } from "@/lib/apis/product-apis";
+import { fetchCurrentProductsData } from "@/lib/apis/product-apis";
 
-export default async function Product() {
-  const data = await fetchAllProductsData();
+interface Params {
+  slug: string;
+}
+
+export default async function Product({ params }: { params: Params }) {
+  const data = await fetchCurrentProductsData(params.slug);
 
   return (
     <div className="w-full bg-white text-textGray">
@@ -15,12 +19,12 @@ export default async function Product() {
           <MdNavigateNext />
           <div>MIG</div>
           <MdNavigateNext />
-          <div>36 MIG Torch</div>
+          <div>{data.name}</div>
         </div>
 
         <div className="flex w-full flex-col items-start justify-between gap-8 sm:flex-row">
-          <ArticleLeftSection productImageList={data[0].image || []} />
-          <ArticleRightSection />
+          <ArticleLeftSection productImageList={data.image || []} />
+          <ArticleRightSection {...data} />
         </div>
       </div>
     </div>

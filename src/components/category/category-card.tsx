@@ -9,7 +9,7 @@ const BASE_URL = process.env.NEXT_PUBLIC_DIRECTUS_FILE_API;
 const CategoryCard: React.FC<ProductsList> = (product) => {
   return (
     <div className="max-w-sm rounded-lg bg-white">
-      <a href="#">
+      <Link href={`/product/${product.slug}`} className="hover:cursor-pointer">
         {product.image && product.image[0] && (
           <Image
             className="rounded-t-lg"
@@ -19,13 +19,16 @@ const CategoryCard: React.FC<ProductsList> = (product) => {
             height={500}
           />
         )}
-      </a>
+      </Link>
       <div className="p-5">
-        <a href="#">
+        <Link
+          href={`/product/${product.slug}`}
+          className="hover:cursor-pointer"
+        >
           <h5 className="text-mainSmall font-bold uppercase">
             {product.name}{" "}
           </h5>
-        </a>
+        </Link>
         <p className="mb-3 font-sans text-gray-700">{product.description}</p>
 
         <Button variant={"customButton"} asChild className="w-full py-2">

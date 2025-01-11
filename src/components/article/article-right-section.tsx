@@ -2,15 +2,16 @@ import { Ratings } from "@/components/ui/ratings";
 import React from "react";
 import HorizantalLine from "../ui/horizantal-line";
 import { Button } from "../ui/button";
+import { ProductsList } from "@/lib/types/products-types";
 
-const ArticleRightSection = () => {
+const ArticleRightSection: React.FC<ProductsList> = (productDetails) => {
   return (
     <div className="flex w-full flex-col gap-5 font-sans sm:w-1/2">
-      <div className="font-chrakraPatch flex w-full items-center justify-start gap-1 font-semibold text-green-700">
+      <div className="flex w-full items-center justify-start gap-1 font-chrakraPatch font-semibold text-green-700">
         MIG
       </div>
       <div className="font-chrakraPatch text-main font-bold uppercase text-black">
-        ACCESCOSRIES
+        {productDetails.name}
       </div>
 
       <div className="flex gap-3">
@@ -20,24 +21,19 @@ const ArticleRightSection = () => {
       </div>
 
       <div className="flex gap-2">
-        <div className="font-semibold text-black">$199</div>
+        <div className="font-semibold text-black">${productDetails.price}</div>
         <div className="text-red-600">Save 25% or $111</div>
       </div>
 
       {/* description  */}
-      <div>
-        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Autem
-        accusamus quae praesentium facere nulla ad, sint quis enim nostrum
-        quibusdam aperiam at vero tempore maxime provident voluptate atque
-        beatae. Suscipit.
-      </div>
+      <div>{productDetails.description}</div>
 
       <HorizantalLine />
 
       {/* Options Section  */}
 
       {/* ADD TO CART SECTION    */}
-      <div className="bg-bgLightGray flex w-full flex-col items-start justify-start gap-4 rounded-xl p-6">
+      <div className="flex w-full flex-col items-start justify-start gap-4 rounded-xl bg-bgLightGray p-6">
         <div className="flex flex-col gap-2">
           <h2 className="font-chrakraPatch text-main font-semibold text-black">
             $1,999 AUD
@@ -52,7 +48,7 @@ const ArticleRightSection = () => {
 
         <Button
           variant={"customButton"}
-          className="font-chrakraPatch w-full py-4 text-white"
+          className="w-full py-4 font-chrakraPatch text-white"
         >
           ADD TO CART
         </Button>
