@@ -1,2 +1,4 @@
 # .eslintignore
 tailwind.config.ts
+
+src\lib\apis\product-apis.ts

@@ -9,8 +9,6 @@ const DIRECTUS_URL = process.env.NEXT_PUBLIC_DIRECTUS_FILE_API;
 const Footer = async () => {
   const footerData = await fetchFooterData();
 
-  console.log(footerData);
-
   return (
     <div className="w-full bg-white text-textGray">
       <div className="mx-auto flex max-w-screen-xl flex-col items-start justify-between gap-8 p-4 md:p-6 md:py-16">

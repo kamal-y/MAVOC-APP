@@ -1,9 +1,9 @@
-interface ProductImage {
+export interface ProductImage {
   id: number;
   directus_files_id: string;
 }
 
-export interface ProductType {
+export interface ProductsList {
   id: string;
   is_available: boolean;
   name: string;
@@ -13,3 +13,11 @@ export interface ProductType {
   slug: string;
   image?: ProductImage[];
 }
+
+export interface Category {
+  id: string;
+  name: string;
+  description: string;
+}
+
+export type CategoryList = Category[];

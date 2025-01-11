@@ -1,12 +1,13 @@
 import { createDirectus, rest } from "@directus/sdk";
-import { ProductType } from "./types/products-types";
+import { ProductsList, CategoryList } from "./types/products-types";
 import { aboutUsType, FooterItems, NavbarItem } from "./types/homepage-types";
 
 interface Schema {
-  products: ProductType[];
+  products: ProductsList[];
   navbar: NavbarItem;
   footer: FooterItems;
   about_us: aboutUsType;
+  categories: CategoryList;
 }
 
 const directus = createDirectus<Schema>(

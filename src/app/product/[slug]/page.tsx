@@ -6,7 +6,6 @@ import { fetchAllProductsData } from "@/lib/apis/product-apis";
 
 export default async function Product() {
   const data = await fetchAllProductsData();
-  console.log("object", data);
 
   return (
     <div className="w-full bg-white text-textGray">
@@ -20,7 +19,7 @@ export default async function Product() {
         </div>
 
         <div className="flex w-full flex-col items-start justify-between gap-8 sm:flex-row">
-          <ArticleLeftSection />
+          <ArticleLeftSection productImageList={data[0].image || []} />
           <ArticleRightSection />
         </div>
       </div>
