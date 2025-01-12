@@ -19,7 +19,7 @@ export const fetchNavbarItems = async (): Promise<NavbarItem> => {
 export const fetchFooterData = async (): Promise<FooterItems> => {
   const result = await directus.request(
     readSingleton("footer", {
-      fields: ["*", "payment_icon"],
+      fields: ["*", "payment_icon.*"],
     }),
   );
 
