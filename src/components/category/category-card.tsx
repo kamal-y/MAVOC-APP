@@ -1,12 +1,23 @@
-import React from "react";
+"use client";
+import React, { useState } from "react";
 import Image from "next/image";
 import { Button } from "../ui/button";
 import Link from "next/link";
 import { ProductType } from "@/lib/types/products-types";
+import useCartStore from "@/stores/cart-items-store";
 
 const BASE_URL = process.env.NEXT_PUBLIC_DIRECTUS_FILE_API;
 
 const CategoryCard: React.FC<ProductType> = (product) => {
+  const [addedToCart, setAddedToCart] = useState<boolean>(true);
+  const { cartItems, addToCart, removeCartItem } = useCartStore();
+
+  const addToCartHandler = async () => {
+    setAddedToCart(!addedToCart);
+  };
+
+  console.log("cart items-->", cartItems);
+
   return (
     <div className="max-w-sm rounded-lg bg-white">
       <Link href={`/product/${product.slug}`} className="hover:cursor-pointer">
@@ -31,14 +42,28 @@ const CategoryCard: React.FC<ProductType> = (product) => {
         </Link>
         <p className="mb-3 font-sans text-gray-700">{product.description}</p>
 
-        <Button variant={"customButton"} asChild className="w-full py-2">
-          <Link
-            href="/#"
-            className="text-mainSmall font-semibold uppercase text-white"
-          >
-            add to cart
-          </Link>
-        </Button>
+        <div
+          className="text-mainSmall font-semibold uppercase text-white"
+          onClick={() => addToCartHandler()}
+        >
+          {addedToCart ? (
+            <Button
+              variant={"customButton"}
+              className="w-full py-2"
+              onClick={() => addToCart(product)}
+            >
+              add to cart
+            </Button>
+          ) : (
+            <Button
+              variant={"destructive"}
+              className="w-full bg-red-500 py-2 uppercase hover:border-red-500 hover:bg-white hover:text-red-500"
+              onClick={() => removeCartItem(product.id)}
+            >
+              remove
+            </Button>
+          )}
+        </div>
       </div>
     </div>
   );

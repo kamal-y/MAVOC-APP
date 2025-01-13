@@ -19,7 +19,6 @@ export const defaultInitState: CategoryState = {
   },
 };
 
-// React-friendly store
 export const useCategoryStore = create<CategoryStore>((set) => ({
   ...defaultInitState,
   changeCategory: (newCategory) => set(() => ({ category: newCategory })),

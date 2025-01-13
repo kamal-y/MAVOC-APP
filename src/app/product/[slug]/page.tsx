@@ -19,7 +19,7 @@ export default async function Product({ params }: { params: Params }) {
           <MdNavigateNext />
           <div>MIG</div>
           <MdNavigateNext />
-          <div>{currentProductData.name}</div>
+          <div>{currentProductData?.name}</div>
         </div>
 
         <div className="flex w-full flex-col items-start justify-between gap-8 sm:flex-row">

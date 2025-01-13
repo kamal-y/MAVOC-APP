@@ -8,7 +8,7 @@ import {
   fetchAllProductsData,
 } from "@/lib/apis/product-apis";
 import { Category, ProductType } from "@/lib/types/products-types";
-import ProductSort from "./product-sort";
+import ProductSort from "./product-sorting-accordion";
 
 interface Props {
   initialCategories: Category[];
