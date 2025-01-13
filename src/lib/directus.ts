@@ -1,9 +1,9 @@
 import { createDirectus, rest } from "@directus/sdk";
-import { ProductsList, CategoryList } from "./types/products-types";
+import { ProductType, CategoryList } from "./types/products-types";
 import { aboutUsType, FooterItems, NavbarItem } from "./types/homepage-types";
 
 interface Schema {
-  products: ProductsList[];
+  products: ProductType[];
   navbar: NavbarItem;
   footer: FooterItems;
   about_us: aboutUsType;

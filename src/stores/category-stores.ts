@@ -15,7 +15,7 @@ export const defaultInitState: CategoryState = {
   category: {
     name: "all",
     id: "",
-    description: "",
+    description: "Initially we eill be having all products",
   },
 };
 

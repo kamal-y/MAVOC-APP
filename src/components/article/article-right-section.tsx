@@ -2,9 +2,10 @@ import { Ratings } from "@/components/ui/ratings";
 import React from "react";
 import HorizantalLine from "../ui/horizantal-line";
 import { Button } from "../ui/button";
-import { ProductsList } from "@/lib/types/products-types";
+import { ProductType } from "@/lib/types/products-types";
+import OrderPolicies from "./order-policies";
 
-const ArticleRightSection: React.FC<ProductsList> = (productDetails) => {
+const ArticleRightSection: React.FC<ProductType> = async (productDetails) => {
   return (
     <div className="flex w-full flex-col gap-5 font-sans sm:w-1/2">
       <div className="flex w-full items-center justify-start gap-1 font-chrakraPatch font-semibold text-green-700">
@@ -54,14 +55,7 @@ const ArticleRightSection: React.FC<ProductsList> = (productDetails) => {
         </Button>
       </div>
 
-      <HorizantalLine />
-      <div>Estimated dispatch with 2-days Free Shipping</div>
-      <HorizantalLine />
-      <div>15-days return policy</div>
-      <HorizantalLine />
-      <div>Global support</div>
-      <HorizantalLine />
-      <div>Ways to pay</div>
+      <OrderPolicies />
     </div>
   );
 };

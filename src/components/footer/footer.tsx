@@ -1,10 +1,8 @@
 import React from "react";
-import Image from "next/image";
 import Link from "next/link";
 import Newsletter from "./newsletter";
 import { fetchFooterData } from "@/lib/apis/homepage-api";
-
-const DIRECTUS_URL = process.env.NEXT_PUBLIC_DIRECTUS_FILE_API;
+import PaymetMehtodsIcons from "./payment-methods-icons";
 
 const Footer = async () => {
   const footerData = await fetchFooterData();
@@ -42,24 +40,7 @@ const Footer = async () => {
               PAYMENT METHODS WE ACCEPT
             </div>
 
-            <div className="flex gap-2">
-              {footerData?.payment_icon?.length ? (
-                footerData.payment_icon.map((data, index) => {
-                  const iconURL = `${DIRECTUS_URL}${data?.directus_files_id}`;
-                  return (
-                    <Image
-                      key={index}
-                      src={iconURL}
-                      alt={`Payment Icon ${index + 1}`}
-                      width={20}
-                      height={20}
-                    />
-                  );
-                })
-              ) : (
-                <div>No payment methods available</div>
-              )}
-            </div>
+            <PaymetMehtodsIcons {...footerData?.payment_icon} />
           </div>
 
           {/* icons and logo part  */}

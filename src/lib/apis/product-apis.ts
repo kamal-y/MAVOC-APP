@@ -1,8 +1,8 @@
 import { readItems } from "@directus/sdk";
 import directus from "./../directus";
-import { CategoryList, ProductsList } from "../types/products-types";
+import { CategoryList, ProductType } from "../types/products-types";
 
-export const fetchAllProductsData = async (): Promise<ProductsList[]> => {
+export const fetchAllProductsData = async (): Promise<ProductType[]> => {
   try {
     const allProductsData = await directus.request(
       readItems("products", {
@@ -22,7 +22,7 @@ export const fetchAllProductsData = async (): Promise<ProductsList[]> => {
 
 export const fetchAllProductsByCategory = async (
   categoryId: string,
-): Promise<ProductsList[]> => {
+): Promise<ProductType[]> => {
   try {
     const allProductsData = await directus.request(
       readItems("products", {
@@ -47,7 +47,7 @@ export const fetchAllProductsByCategory = async (
 
 export const fetchCurrentProductsData = async (
   slugValue: string,
-): Promise<ProductsList> => {
+): Promise<ProductType> => {
   try {
     const currentProductData = await directus.request(
       readItems("products", {
@@ -60,7 +60,7 @@ export const fetchCurrentProductsData = async (
       }),
     );
 
-    return currentProductData[0] as ProductsList;
+    return currentProductData[0] as ProductType;
   } catch (error) {
     console.error("Error fetching fetchCurrentProductsData function:", error);
     throw error;

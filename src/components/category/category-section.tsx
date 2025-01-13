@@ -1,5 +1,4 @@
 "use client";
-
 import React, { useState } from "react";
 import CategoryList from "../../components/category/category-list";
 import CategoryGridSection from "@/components/category/category-grids";
@@ -8,11 +7,12 @@ import {
   fetchAllProductsByCategory,
   fetchAllProductsData,
 } from "@/lib/apis/product-apis";
-import { Category, ProductsList } from "@/lib/types/products-types";
+import { Category, ProductType } from "@/lib/types/products-types";
+import ProductSort from "./product-sort";
 
 interface Props {
   initialCategories: Category[];
-  initialProducts: ProductsList[];
+  initialProducts: ProductType[];
 }
 
 const CategoryClientComponent: React.FC<Props> = ({
@@ -35,7 +35,10 @@ const CategoryClientComponent: React.FC<Props> = ({
     <div className="w-full bg-white text-black">
       <div className="mx-auto flex max-w-screen-xl items-center justify-center gap-4">
         {/* All products button */}
-        <div onClick={CategoryAllHandler} className="hover:cursor-pointer">
+        <div
+          onClick={() => CategoryAllHandler()}
+          className="hover:cursor-pointer"
+        >
           <CategoryList name="all" description="" id="" />
         </div>
 
@@ -52,11 +55,9 @@ const CategoryClientComponent: React.FC<Props> = ({
       </div>
       <HorizantalLine />
       <div className="mx-auto flex max-w-screen-xl flex-col items-start justify-between gap-8 bg-[#FAFAFA] p-4 py-8 md:p-6 md:py-16">
-        <div className="flex w-full items-center justify-between">
-          <div className="text-main font-bold uppercase">ACCESSORIES</div>
-          <div className="font-sans">sort by</div>
-        </div>
+        <ProductSort />
 
+        {/* ALL Products Section  */}
         <CategoryGridSection allProducts={allProducts} />
       </div>
     </div>

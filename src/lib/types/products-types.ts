@@ -3,7 +3,7 @@ export interface ProductImage {
   directus_files_id: string;
 }
 
-export interface ProductsList {
+export interface ProductType {
   id: string;
   is_available: boolean;
   name: string;

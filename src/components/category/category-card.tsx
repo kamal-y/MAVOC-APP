@@ -2,11 +2,11 @@ import React from "react";
 import Image from "next/image";
 import { Button } from "../ui/button";
 import Link from "next/link";
-import { ProductsList } from "@/lib/types/products-types";
+import { ProductType } from "@/lib/types/products-types";
 
 const BASE_URL = process.env.NEXT_PUBLIC_DIRECTUS_FILE_API;
 
-const CategoryCard: React.FC<ProductsList> = (product) => {
+const CategoryCard: React.FC<ProductType> = (product) => {
   return (
     <div className="max-w-sm rounded-lg bg-white">
       <Link href={`/product/${product.slug}`} className="hover:cursor-pointer">

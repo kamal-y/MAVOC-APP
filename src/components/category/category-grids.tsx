@@ -1,9 +1,9 @@
 import React from "react";
 import CategoryCard from "./category-card";
-import { ProductsList } from "@/lib/types/products-types";
+import { ProductType } from "@/lib/types/products-types";
 
 interface CategoryGridSectionProps {
-  allProducts: ProductsList[];
+  allProducts: ProductType[];
 }
 
 const CategoryGridSection: React.FC<CategoryGridSectionProps> = ({
@@ -11,7 +11,7 @@ const CategoryGridSection: React.FC<CategoryGridSectionProps> = ({
 }) => {
   return (
     <div className="grid grid-cols-2 gap-4 p-4 md:grid-cols-3 lg:grid-cols-4">
-      {allProducts?.map((product: ProductsList, index: number) => (
+      {allProducts?.map((product: ProductType, index: number) => (
         <CategoryCard key={index} {...product} />
       ))}
     </div>
