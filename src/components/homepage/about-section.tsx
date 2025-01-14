@@ -1,10 +1,10 @@
 import Image from "next/image";
 import React from "react";
-import { fetchAboutUsData } from "@/lib/apis/homepage-api";
+import { fetchAboutUsData } from "@/lib/apis/directus query/homepage-apis";
 
 const DIRECTUS_FILE_API = "http://localhost:8055/assets/";
 
-const AboutSection = async () => {
+const AboutSection: React.FC = async () => {
   const aboutUsData = await fetchAboutUsData();
 
   if (!aboutUsData)

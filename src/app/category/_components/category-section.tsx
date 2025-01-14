@@ -1,21 +1,21 @@
 "use client";
 import React, { useState } from "react";
-import CategoryList from "../../components/category/category-list";
-import CategoryGridSection from "@/components/category/category-grids";
+import CategoryList from "./category-list";
+import CategoryGridSection from "@/app/category/_components/category-grids";
 import HorizantalLine from "@/components/ui/horizantal-line";
 import {
   fetchAllProductsByCategory,
   fetchAllProductsData,
-} from "@/lib/apis/product-apis";
+} from "@/lib/apis/directus query/product-apis";
 import { Category, ProductType } from "@/lib/types/products-types";
 import ProductSort from "./product-sorting-accordion";
 
-interface Props {
+interface CategoryClientComponentProps {
   initialCategories: Category[];
   initialProducts: ProductType[];
 }
 
-const CategoryClientComponent: React.FC<Props> = ({
+const CategoryClientComponent: React.FC<CategoryClientComponentProps> = ({
   initialCategories,
   initialProducts,
 }) => {

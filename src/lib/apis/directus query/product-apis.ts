@@ -1,6 +1,6 @@
 import { readItems } from "@directus/sdk";
-import directus from "./../directus";
-import { CategoryList, ProductType } from "../types/products-types";
+import directus from "@/lib/directus";
+import { CategoryList, ProductType } from "@/lib/types/products-types";
 
 export const fetchAllProductsData = async (): Promise<ProductType[]> => {
   try {
@@ -10,9 +10,6 @@ export const fetchAllProductsData = async (): Promise<ProductType[]> => {
       }),
     );
 
-    if (!allProductsData) {
-      throw new Error("About section not found");
-    }
     return allProductsData;
   } catch (error) {
     console.error("Error fetching fetchAllProductsData function:", error);
@@ -35,9 +32,6 @@ export const fetchAllProductsByCategory = async (
       }),
     );
 
-    if (!allProductsData) {
-      throw new Error("About section not found");
-    }
     return allProductsData;
   } catch (error) {
     console.error("Error fetching fetchAllProductsData function:", error);
@@ -60,7 +54,7 @@ export const fetchCurrentProductsData = async (
       }),
     );
 
-    return currentProductData[0] as ProductType;
+    return currentProductData[0];
   } catch (error) {
     console.error("Error fetching fetchCurrentProductsData function:", error);
     throw error;
@@ -71,9 +65,6 @@ export const fetchAllCategoriesData = async (): Promise<CategoryList> => {
   try {
     const allCategories = await directus.request(readItems("categories"));
 
-    if (!allCategories) {
-      throw new Error("allCategories not found");
-    }
     return allCategories;
   } catch (error) {
     console.error("Error fetching fetchAllProductsData function:", error);

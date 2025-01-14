@@ -5,18 +5,23 @@ import Image from "next/image";
 
 const BASE_URL = process.env.NEXT_PUBLIC_DIRECTUS_FILE_API;
 
-const ArticleLeftSection = ({
+interface ArticleLeftSectionProps {
+  productImageList?: ProductImage[];
+}
+
+const ArticleLeftSection: React.FC<ArticleLeftSectionProps> = ({
   productImageList,
-}: {
-  productImageList: ProductImage[];
 }) => {
   const [currentImage, setCurrentImage] = useState<ProductImage>(
-    productImageList[0],
+    productImageList && productImageList.length > 0
+      ? productImageList[0]
+      : ({} as ProductImage),
   );
 
   return (
     <div className="flex w-full flex-col gap-3 sm:w-1/2">
       <div className="h-45 w-full">
+        {/* Main Image to Show  */}
         <Image
           src={`${BASE_URL}${currentImage?.directus_files_id}`}
           alt=""
@@ -25,8 +30,10 @@ const ArticleLeftSection = ({
           className="bg-bgDarkGray"
         />
       </div>
+
+      {/* other images of current product to toggle  */}
       <div className="flex gap-2">
-        {productImageList.map((image) => (
+        {productImageList?.map((image) => (
           <Image
             key={image.directus_files_id}
             src={`${BASE_URL}${image.directus_files_id}`}

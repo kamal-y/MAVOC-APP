@@ -3,7 +3,7 @@ import useCartStore from "@/stores/cart-items-store";
 import React from "react";
 import { BsCart } from "react-icons/bs";
 
-const CartIcon = () => {
+const CartIcon: React.FC = () => {
   const { cartItems } = useCartStore();
 
   return (

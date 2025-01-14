@@ -5,10 +5,10 @@ import { TbUserCircle } from "react-icons/tb";
 import MobileNavbar from "./mobile-navbar-items";
 import MAVOC from "@/../public/Group.svg";
 import Link from "next/link";
-import { fetchNavbarItems } from "@/lib/apis/homepage-api";
+import { fetchNavbarItems } from "@/lib/apis/directus query/homepage-apis";
 import CartIcon from "./Cart-Icon";
 
-const Navbar = async () => {
+const Navbar: React.FC = async () => {
   const navbarData = await fetchNavbarItems();
 
   return (
@@ -32,7 +32,7 @@ const Navbar = async () => {
           <IoSearch className="h-6 w-6" aria-label="Search" />
           <TbUserCircle className="h-6 w-6" aria-label="user profile" />
           <CartIcon />
-          <MobileNavbar nav_items={navbarData.nav_items || []} />
+          <MobileNavbar nav_items={navbarData.nav_items} />
         </div>
       </div>
     </nav>

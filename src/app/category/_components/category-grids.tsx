@@ -1,5 +1,5 @@
 import React from "react";
-import CategoryCard from "./category-card";
+import CategoryCard from "../../../components/card/category-card";
 import { ProductType } from "@/lib/types/products-types";
 
 interface CategoryGridSectionProps {

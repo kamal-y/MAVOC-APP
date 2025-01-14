@@ -1,6 +1,6 @@
 import React from "react";
 
-const OurPromiseSection = () => {
+const OurPromiseSection: React.FC = () => {
   // if (!isSuccess) return <div className="p-4 text-mainSmall">Loading...</div>;
 
   return (
@@ -17,7 +17,7 @@ const OurPromiseSection = () => {
         </div>
 
         <div className="grid grid-cols-2 items-center justify-center gap-x-4 gap-y-4 text-center">
-          <div className="bg-bgDarkModeGray flex flex-col gap-4 rounded-xl px-4 py-6">
+          <div className="flex flex-col gap-4 rounded-xl bg-bgDarkModeGray px-4 py-6">
             <div></div>
 
             <div className="text-mainSmall font-bold text-white">

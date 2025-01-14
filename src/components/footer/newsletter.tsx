@@ -18,7 +18,7 @@ import { Checkbox } from "@/components/ui/checkbox";
 
 import React from "react";
 
-const Newsletter = () => {
+const Newsletter: React.FC = () => {
   const formSchema = z.object({
     email: z
       .string({ required_error: "Email is required" })

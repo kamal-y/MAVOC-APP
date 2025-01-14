@@ -14,6 +14,8 @@ interface CartState {
   addToCart: (product: Product, quantity?: number) => void;
   removeCartItem: (id: string) => void;
   updateQuantity: (id: string, quantity?: number) => void;
+  totalQuantity: () => number; // Derived state
+  totalPrice: () => number; // Derived state
 }
 
 const useCartStore = create<CartState>((set) => ({
@@ -50,6 +52,18 @@ const useCartStore = create<CartState>((set) => ({
         item.id === id ? { ...item, quantity } : item,
       ),
     })),
+  totalQuantity: (): number => {
+    const { cartItems } = useCartStore.getState();
+    return cartItems.reduce((total, item) => total + item.quantity, 0);
+  },
+
+  totalPrice: (): number => {
+    const state = useCartStore.getState();
+    return state.cartItems.reduce(
+      (total, item) => total + 1 * item.quantity,
+      0,
+    );
+  },
 }));
 
 export default useCartStore;

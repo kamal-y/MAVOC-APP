@@ -1,10 +1,10 @@
 import React from "react";
 import Link from "next/link";
 import Newsletter from "./newsletter";
-import { fetchFooterData } from "@/lib/apis/homepage-api";
+import { fetchFooterData } from "@/lib/apis/directus query/homepage-apis";
 import PaymetMehtodsIcons from "./payment-methods-icons";
 
-const Footer = async () => {
+const Footer: React.FC = async () => {
   const footerData = await fetchFooterData();
 
   return (

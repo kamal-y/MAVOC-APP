@@ -5,7 +5,7 @@ import { Button } from "../ui/button";
 import { ProductType } from "@/lib/types/products-types";
 import OrderPolicies from "./order-policies";
 
-const ArticleRightSection: React.FC<ProductType> = async (productDetails) => {
+const ArticleRightSection: React.FC<ProductType> = (productDetails) => {
   return (
     <div className="flex w-full flex-col gap-5 font-sans sm:w-1/2">
       <div className="flex w-full items-center justify-start gap-1 font-chrakraPatch font-semibold text-green-700">

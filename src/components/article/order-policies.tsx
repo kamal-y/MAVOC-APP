@@ -1,9 +1,9 @@
 import React from "react";
 import PaymetMehtodsIcons from "../footer/payment-methods-icons";
-import { fetchFooterData } from "@/lib/apis/homepage-api";
+import { fetchFooterData } from "@/lib/apis/directus query/homepage-apis";
 import HorizantalLine from "../ui/horizantal-line";
 
-const OrderPolicies = async () => {
+const OrderPolicies: React.FC = async () => {
   const { payment_icon: payIconsList } = await fetchFooterData();
 
   return (

@@ -1,9 +1,9 @@
 import React from "react";
-import CategoryClientComponent from "@/components/category/category-section";
+import CategoryClientComponent from "@/app/category/_components/category-section";
 import {
   fetchAllCategoriesData,
   fetchAllProductsData,
-} from "@/lib/apis/product-apis";
+} from "@/lib/apis/directus query/product-apis";
 // import { fetchProducts } from "@/lib/apis/medusa query";
 
 export default async function CategoryPage() {

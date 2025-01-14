@@ -2,7 +2,7 @@ import React from "react";
 import { MdNavigateNext } from "react-icons/md";
 import ArticleLeftSection from "@/components/article/article-left-section";
 import ArticleRightSection from "@/components/article/article-right-section";
-import { fetchCurrentProductsData } from "@/lib/apis/product-apis";
+import { fetchCurrentProductsData } from "@/lib/apis/directus query/product-apis";
 
 interface Params {
   slug: string;
@@ -23,9 +23,7 @@ export default async function Product({ params }: { params: Params }) {
         </div>
 
         <div className="flex w-full flex-col items-start justify-between gap-8 sm:flex-row">
-          <ArticleLeftSection
-            productImageList={currentProductData.image || []}
-          />
+          <ArticleLeftSection productImageList={currentProductData.image} />
           <ArticleRightSection {...currentProductData} />
         </div>
       </div>

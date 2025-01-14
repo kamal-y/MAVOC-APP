@@ -5,9 +5,9 @@ import { FooterItems } from "@/lib/types/homepage-types";
 const DIRECTUS_URL = process.env.NEXT_PUBLIC_DIRECTUS_FILE_API;
 
 const PaymetMehtodsIcons: React.FC<FooterItems["payment_icon"]> = async (
-  payment_icon,
+  payment_icons,
 ) => {
-  const paymentIconsArray = Object.values(payment_icon || {});
+  const paymentIconsArray = Object.values(payment_icons || {});
 
   return (
     <div className="flex h-full gap-2">

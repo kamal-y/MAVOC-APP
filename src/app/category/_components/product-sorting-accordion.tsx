@@ -7,7 +7,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 
-const ProductSort = () => {
+const ProductSort: React.FC = () => {
   return (
     <div className="flex w-full items-center justify-between">
       <div className="text-main font-bold uppercase">ACCESSORIES</div>

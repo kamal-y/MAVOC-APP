@@ -12,7 +12,7 @@ const features = [
   { title: '7" LCD', description: "Touch Screen" },
 ];
 
-const HeroSection = () => {
+const HeroSection: React.FC = () => {
   return (
     <div
       className="relative w-full bg-cover bg-center text-white"
