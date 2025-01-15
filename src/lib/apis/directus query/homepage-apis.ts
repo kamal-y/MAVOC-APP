@@ -4,6 +4,8 @@ import {
   NavbarItem,
   FooterItems,
   aboutUsType,
+  OurPromiseSection,
+  HeroSectionType,
 } from "@/lib/types/homepage-types";
 
 export const fetchNavbarItems = async (): Promise<NavbarItem> => {
@@ -39,6 +41,31 @@ export const fetchAboutUsData = async (): Promise<aboutUsType> => {
     return response;
   } catch (error) {
     console.error("Error fetching fetchAboutUsData data:", error);
+    throw error;
+  }
+};
+
+export const fetchOurPromiseSectionData =
+  async (): Promise<OurPromiseSection> => {
+    try {
+      const response = await directus.request(
+        readSingleton("our_Promise_Section"),
+      );
+
+      return response;
+    } catch (error) {
+      console.error("Error fetching fetchOurPromiseSectionData data:", error);
+      throw error;
+    }
+  };
+
+export const fetchOurHeroSectionData = async (): Promise<HeroSectionType> => {
+  try {
+    const response = await directus.request(readSingleton("hero_section"));
+
+    return response;
+  } catch (error) {
+    console.error("Error fetching fetchOurHeroSectionData data:", error);
     throw error;
   }
 };

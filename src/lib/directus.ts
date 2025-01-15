@@ -1,6 +1,12 @@
 import { createDirectus, rest } from "@directus/sdk";
 import { ProductType, CategoryList } from "./types/products-types";
-import { aboutUsType, FooterItems, NavbarItem } from "./types/homepage-types";
+import {
+  aboutUsType,
+  FooterItems,
+  HeroSectionType,
+  NavbarItem,
+  OurPromiseSection,
+} from "./types/homepage-types";
 
 interface Schema {
   products: ProductType[];
@@ -8,6 +14,8 @@ interface Schema {
   footer: FooterItems;
   about_us: aboutUsType;
   categories: CategoryList;
+  our_Promise_Section: OurPromiseSection;
+  hero_section: HeroSectionType;
 }
 
 const directus = createDirectus<Schema>(

@@ -31,3 +31,22 @@ export interface aboutUsType {
   description: string;
   file: string;
 }
+
+export interface OurPromiseSection {
+  title: string;
+  description: string;
+  cards_details: Array<{
+    img: string;
+    heading: string;
+    subheading: string;
+  }>;
+}
+
+export interface HeroSectionType {
+  main_title: string;
+  main_description: string;
+  features: Array<{
+    title: string;
+    desc: string;
+  }>;
+}
