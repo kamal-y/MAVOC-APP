@@ -23,7 +23,7 @@ export const fetchFooterData = async (): Promise<FooterItems> => {
   try {
     const response = await directus.request(
       readSingleton("footer", {
-        fields: ["*", "payment_icon.*"],
+        fields: ["*", `payment_icon`],
       }),
     );
 
@@ -69,3 +69,22 @@ export const fetchOurHeroSectionData = async (): Promise<HeroSectionType> => {
     throw error;
   }
 };
+
+// export const createProduct = async () => {
+//   try {
+//     const response = await directus.request(
+//       createItem("products", {
+//         name: "yo",
+//         price: 1212,
+//         description: "hsgjhs",
+//       }),
+//     );
+
+//     console.log("item craetde in directus is rthis object-->", response);
+
+//     return response;
+//   } catch (error) {
+//     console.error("Error fetching fetchOurHeroSectionData data:", error);
+//     throw error;
+//   }
+// };

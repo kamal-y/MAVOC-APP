@@ -10,13 +10,11 @@ const BASE_URL = process.env.NEXT_PUBLIC_DIRECTUS_FILE_API;
 
 const CategoryCard: React.FC<ProductType> = (product) => {
   const [addedToCart, setAddedToCart] = useState<boolean>(true);
-  const { cartItems, addToCart, removeCartItem } = useCartStore();
+  const { addToCart, removeCartItem } = useCartStore();
 
   const addToCartHandler = async () => {
     setAddedToCart(!addedToCart);
   };
-
-  console.log("cart items-->", cartItems);
 
   return (
     <div className="max-w-sm rounded-lg bg-white">

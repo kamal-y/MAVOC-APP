@@ -10,9 +10,6 @@ export default async function CategoryPage() {
   const allCategories = await fetchAllCategoriesData();
   const allProducts = await fetchAllProductsData();
 
-  // const data = await fetchProducts();
-  // console.log("object data-->", data);
-
   return (
     <CategoryClientComponent
       initialCategories={allCategories}

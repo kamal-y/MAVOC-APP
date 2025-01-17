@@ -4,12 +4,14 @@ import ArticleLeftSection from "@/components/article/article-left-section";
 import ArticleRightSection from "@/components/article/article-right-section";
 import { fetchCurrentProductsData } from "@/lib/apis/directus query/product-apis";
 
-interface Params {
-  slug: string;
-}
+export default async function Product({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}) {
+  const slug = (await params).slug;
 
-export default async function Product({ params }: { params: Params }) {
-  const currentProductData = await fetchCurrentProductsData(params.slug);
+  const currentProductData = await fetchCurrentProductsData(slug);
 
   return (
     <div className="w-full bg-white text-textGray">

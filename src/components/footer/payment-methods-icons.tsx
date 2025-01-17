@@ -14,7 +14,6 @@ const PaymetMehtodsIcons: React.FC<FooterItems["payment_icon"]> = async (
       {paymentIconsArray?.length ? (
         paymentIconsArray.map((data, index) => {
           const iconURL = `${DIRECTUS_URL}${data?.directus_files_id}`;
-          console.log(iconURL);
           return (
             <Image
               key={index}

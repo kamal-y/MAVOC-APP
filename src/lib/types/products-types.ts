@@ -7,7 +7,7 @@ export interface ProductType {
   id: string;
   is_available: boolean;
   name: string;
-  price: string;
+  price: number;
   description: string;
   category: string;
   slug: string;
