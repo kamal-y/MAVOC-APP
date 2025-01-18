@@ -13,10 +13,11 @@ const AboutSection: React.FC = async () => {
   return (
     <div className="w-full bg-black text-textGray">
       <div className="mx-auto flex max-w-screen-xl flex-col items-start justify-between gap-8 p-4 py-8 md:p-6 md:py-16">
+        {/* about section title  */}
         <div className="mx-auto w-fit text-center text-sectionMainHeading font-bold uppercase">
           {aboutUsData.title}
         </div>
-
+        {/* about section description  */}
         <div className="mx-auto max-w-3xl text-center font-sans">
           {aboutUsData.description}
         </div>

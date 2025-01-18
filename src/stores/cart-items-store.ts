@@ -1,6 +1,8 @@
 import { ProductType } from "@/lib/types/products-types";
 import { create } from "zustand";
 
+//To manage Cart Items State For Future CHECKOUT PURPOSE
+
 export type Product = ProductType;
 
 export type TotalQuantity = {

@@ -1,12 +1,11 @@
 "use client";
 import React, { useState } from "react";
+import demoImage from "@/../public/image 8.png";
 import Image from "next/image";
 import { Button } from "../ui/button";
 import Link from "next/link";
 import { ProductType } from "@/lib/types/products-types";
 import useCartStore from "@/stores/cart-items-store";
-
-const BASE_URL = process.env.NEXT_PUBLIC_DIRECTUS_FILE_API;
 
 const CategoryCard: React.FC<ProductType> = (product) => {
   const [addedToCart, setAddedToCart] = useState<boolean>(true);
@@ -19,7 +18,7 @@ const CategoryCard: React.FC<ProductType> = (product) => {
   return (
     <div className="max-w-sm rounded-lg bg-white">
       <Link href={`/product/${product.slug}`} className="hover:cursor-pointer">
-        {product.image && product.image[0] && (
+        {/* {product.image && product.image[0] && (
           <Image
             className="rounded-t-lg"
             src={`${BASE_URL}${product.image[0].directus_files_id}`}
@@ -27,7 +26,16 @@ const CategoryCard: React.FC<ProductType> = (product) => {
             width={500}
             height={500}
           />
-        )}
+        )} */}
+
+        {/* REPLACING WITH DEMO IMAGE FOR TEST TESTING  */}
+        <Image
+          className="rounded-t-lg"
+          src={demoImage}
+          alt=""
+          width={500}
+          height={500}
+        />
       </Link>
       <div className="p-5">
         <Link
@@ -40,6 +48,7 @@ const CategoryCard: React.FC<ProductType> = (product) => {
         </Link>
         <p className="mb-3 font-sans text-gray-700">{product.description}</p>
 
+        {/* ADD TO CART BUTTON  */}
         <div
           className="text-mainSmall font-semibold uppercase text-white"
           onClick={() => addToCartHandler()}

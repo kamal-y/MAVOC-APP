@@ -2,17 +2,24 @@ import { Ratings } from "@/components/ui/ratings";
 import React from "react";
 import HorizantalLine from "../ui/horizantal-line";
 import { Button } from "../ui/button";
-import { ProductType } from "@/lib/types/products-types";
 import OrderPolicies from "./order-policies";
+import { medusaProductType } from "@/lib/types/medusa-product-types";
+import OptionsVarientsSection from "./options-varients-section";
 
-const ArticleRightSection: React.FC<ProductType> = (productDetails) => {
+interface ArticleRightSectionTypes {
+  medusaProductData: medusaProductType;
+}
+
+const ArticleRightSection: React.FC<ArticleRightSectionTypes> = ({
+  medusaProductData,
+}) => {
   return (
     <div className="flex w-full flex-col gap-5 font-sans sm:w-1/2">
       <div className="flex w-full items-center justify-start gap-1 font-chrakraPatch font-semibold text-green-700">
         MIG
       </div>
-      <div className="font-chrakraPatch text-main font-bold uppercase text-black">
-        {productDetails.name}
+      <div className="font-chrakraPatch text-main font-semibold uppercase text-black">
+        {medusaProductData.title}
       </div>
 
       <div className="flex gap-3">
@@ -22,25 +29,31 @@ const ArticleRightSection: React.FC<ProductType> = (productDetails) => {
       </div>
 
       <div className="flex gap-2">
-        <div className="font-semibold text-black">${productDetails.price}</div>
+        <div className="font-semibold text-black">
+          {medusaProductData.variants[0].calculated_price.calculated_amount}
+        </div>
         <div className="text-red-600">Save 25% or $111</div>
       </div>
 
       {/* description  */}
-      <div>{productDetails.description}</div>
+      <div>{medusaProductData.description}</div>
 
       <HorizantalLine />
 
       {/* Options Section  */}
+      <OptionsVarientsSection varients={medusaProductData.variants} />
 
       {/* ADD TO CART SECTION    */}
       <div className="flex w-full flex-col items-start justify-start gap-4 rounded-xl bg-bgLightGray p-6">
         <div className="flex flex-col gap-2">
           <h2 className="font-chrakraPatch text-main font-semibold text-black">
-            $1,999 AUD
+            $ {medusaProductData.variants[0].calculated_price.calculated_amount}{" "}
+            AUD
           </h2>
           <div className="flex gap-1">
-            <div className="font-semibold">199</div>
+            <div className="font-semibold">
+              {medusaProductData.variants[0].calculated_price.calculated_amount}
+            </div>
             <div className="text-red-500">Save 25% or $111</div>
           </div>
         </div>

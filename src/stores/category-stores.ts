@@ -1,6 +1,8 @@
 import { Category } from "@/lib/types/products-types";
 import { create } from "zustand";
 
+//To manage category state and fetch directly from DIRECTUS Backend
+
 export type CategoryState = {
   category: Category;
 };

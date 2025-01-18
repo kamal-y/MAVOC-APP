@@ -33,3 +33,5 @@
 //     queryFn: () => fetchAllProductsData(modelName),
 //   });
 // };
+
+//DID NOT USED HOOKS FOR SEO PURPOSE

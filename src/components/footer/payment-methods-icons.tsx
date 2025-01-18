@@ -9,6 +9,7 @@ const PaymetMehtodsIcons: React.FC<FooterItems["payment_icon"]> = async (
 ) => {
   const paymentIconsArray = Object.values(payment_icons || {});
 
+  //  ALL PAYMENT ICONS
   return (
     <div className="flex h-full gap-2">
       {paymentIconsArray?.length ? (

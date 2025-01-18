@@ -2,7 +2,11 @@ import React from "react";
 import { MdNavigateNext } from "react-icons/md";
 import ArticleLeftSection from "@/components/article/article-left-section";
 import ArticleRightSection from "@/components/article/article-right-section";
-import { fetchCurrentProductsData } from "@/lib/apis/directus query/product-apis";
+import {
+  fetchProductBySlugInMedusa,
+  fetchRegions,
+} from "@/lib/apis/medusa query";
+import { medusaProductType } from "@/lib/types/medusa-product-types";
 
 export default async function Product({
   params,
@@ -11,7 +15,16 @@ export default async function Product({
 }) {
   const slug = (await params).slug;
 
-  const currentProductData = await fetchCurrentProductsData(slug);
+  const region = await fetchRegions(); // for the price of the varient
+
+  const medusaProductData: medusaProductType = await fetchProductBySlugInMedusa(
+    slug,
+    region.id,
+  );
+
+  if (!medusaProductData) {
+    throw new Error(`Product not found for slug: ${slug}`);
+  }
 
   return (
     <div className="w-full bg-white text-textGray">
@@ -21,12 +34,12 @@ export default async function Product({
           <MdNavigateNext />
           <div>MIG</div>
           <MdNavigateNext />
-          <div>{currentProductData?.name}</div>
+          <div className="font-semibold">{medusaProductData?.title}</div>
         </div>
 
         <div className="flex w-full flex-col items-start justify-between gap-8 sm:flex-row">
-          <ArticleLeftSection productImageList={currentProductData.image} />
-          <ArticleRightSection {...currentProductData} />
+          <ArticleLeftSection productImageList={medusaProductData?.images} />
+          <ArticleRightSection medusaProductData={medusaProductData} />
         </div>
       </div>
     </div>

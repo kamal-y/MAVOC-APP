@@ -18,7 +18,7 @@ const OurPromiseSection: React.FC = async () => {
           {data.description}
         </div>
 
-        <div className="grid grid-cols-2 items-center justify-center gap-x-4 gap-y-4 text-center">
+        <div className="grid grid-cols-1 items-center justify-center gap-x-4 gap-y-4 px-8 text-center sm:grid-cols-2 sm:px-2">
           {data.cards_details.map((data, index) => (
             <OurPromiseSectionCard {...data} key={index} />
           ))}

@@ -47,7 +47,9 @@ const Newsletter: React.FC = () => {
           name="email"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Newsletter</FormLabel>
+              <FormLabel className="text-mainSmall text-black">
+                Newsletter
+              </FormLabel>
               <FormControl>
                 <Input
                   className="border px-4 py-2"

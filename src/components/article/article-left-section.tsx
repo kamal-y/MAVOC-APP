@@ -1,21 +1,19 @@
 "use client";
 import React, { useState } from "react";
-import { ProductImage } from "@/lib/types/products-types";
 import Image from "next/image";
-
-const BASE_URL = process.env.NEXT_PUBLIC_DIRECTUS_FILE_API;
+import { ImageType } from "@/lib/types/medusa-product-types";
 
 interface ArticleLeftSectionProps {
-  productImageList?: ProductImage[];
+  productImageList?: ImageType[];
 }
 
 const ArticleLeftSection: React.FC<ArticleLeftSectionProps> = ({
   productImageList,
 }) => {
-  const [currentImage, setCurrentImage] = useState<ProductImage>(
+  const [currentImage, setCurrentImage] = useState<ImageType | null>(
     productImageList && productImageList.length > 0
-      ? productImageList[0]
-      : ({} as ProductImage),
+      ? { id: "0", url: productImageList[0].url }
+      : ({} as ImageType),
   );
 
   return (
@@ -23,7 +21,7 @@ const ArticleLeftSection: React.FC<ArticleLeftSectionProps> = ({
       <div className="h-45 w-full">
         {/* Main Image to Show  */}
         <Image
-          src={`${BASE_URL}${currentImage?.directus_files_id}`}
+          src={`${currentImage?.url}`}
           alt=""
           width={800}
           height={400}
@@ -35,8 +33,8 @@ const ArticleLeftSection: React.FC<ArticleLeftSectionProps> = ({
       <div className="flex gap-2">
         {productImageList?.map((image) => (
           <Image
-            key={image.directus_files_id}
-            src={`${BASE_URL}${image.directus_files_id}`}
+            key={image.id}
+            src={`${image.url}`}
             alt=""
             width={100}
             height={100}
